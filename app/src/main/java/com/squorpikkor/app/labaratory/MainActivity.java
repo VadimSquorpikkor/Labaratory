@@ -8,15 +8,19 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView text;
+    TextView text1, text2;
     Button button1, button2;
+
+    long startTime;
+    long endTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        text = (TextView) findViewById(R.id.textView);
+        text1 = (TextView) findViewById(R.id.textView1);
+        text2 = (TextView) findViewById(R.id.textView2);
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
 
@@ -36,5 +40,14 @@ public class MainActivity extends AppCompatActivity {
 
         button1.setOnClickListener(listener);
         button2.setOnClickListener(listener);
+    }
+
+    void displayVar() {
+        text1.setText(String.valueOf(startTime));
+        text2.setText(String.valueOf(endTime));
+    }
+
+    void displayVar(Class<?> t) {
+        text1.setText(String.valueOf(t));
     }
 }
