@@ -1,5 +1,6 @@
 package com.squorpikkor.app.labaratory;
 
+import android.app.*;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ public class StartActivity extends AppCompatActivity {
                         clickActivity(MainActivity.class);
                         break;
                     case R.id.butt02:
-                        clickActivity(Main2Activity.class);
+                        clickActivity(ListActivity.class);
                         break;
                 }
             }
@@ -44,10 +45,9 @@ public class StartActivity extends AppCompatActivity {
                         doToast("Долгое нажатие 2");
                         break;
                 }
-                return false;
+                return true;
             }
         };
-
 
         mButton1.setOnLongClickListener(longlistener);
         mButton2.setOnLongClickListener(longlistener);
@@ -59,6 +59,6 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void doToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
