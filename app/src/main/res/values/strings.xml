@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Labaratory</string>
+    <string name="add_to_db">Add to DB</string>
+    <string name="db_activity">DBActivity</string>
 </resources>

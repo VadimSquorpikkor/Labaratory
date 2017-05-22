@@ -16,5 +16,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/butt02"
         android:text="@string/button02"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/butt03"
+        android:text="@string/db_activity"/>
 
 </LinearLayout>

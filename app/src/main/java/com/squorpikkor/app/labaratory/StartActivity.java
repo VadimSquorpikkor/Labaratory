@@ -17,6 +17,7 @@ public class StartActivity extends AppCompatActivity {
 
         Button mButton1 = (Button) findViewById(R.id.butt01);
         Button mButton2 = (Button) findViewById(R.id.butt02);
+        Button mButton3 = (Button) findViewById(R.id.butt03);
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
@@ -28,12 +29,16 @@ public class StartActivity extends AppCompatActivity {
                     case R.id.butt02:
                         clickActivity(ListActivity.class);
                         break;
+                    case R.id.butt03:
+                        clickActivity(DBActivity.class);
+                        break;
                 }
             }
         };
 
         mButton1.setOnClickListener(listener);
         mButton2.setOnClickListener(listener);
+        mButton3.setOnClickListener(listener);
 
         View.OnLongClickListener longlistener = new View.OnLongClickListener() {
             @Override
