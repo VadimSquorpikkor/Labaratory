@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,16 +14,52 @@ public class MainActivity extends AppCompatActivity {
     TextView text1, text2;
     Button button1, button2;
 
+    String s;
+
     long startTime;
     long endTime;
 
+    boolean stopButtonNotPressed;
 
-    Thread thread = new Thread();
+
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            long startTime = System.currentTimeMillis();
+            while (stopButtonNotPressed) {
+                Log.e("LOGG!!", "Came inside while cycle");
+                try {
+                    Thread.sleep(100);
+                    Log.e("LOGG!!!", (System.currentTimeMillis() - startTime) + " ms");
+                     s = (System.currentTimeMillis() - startTime)/100 + " ms";
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+
+                            text1.setText(s);
+                        }
+                    });
+
+                    endTime = System.currentTimeMillis() - startTime;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            Log.e("LOGG!!", "Passing while cycle");
+//            endTime = System.currentTimeMillis() - startTime;
+        }
+    };
+
+    Thread thread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        stopButtonNotPressed = true;
 
         text1 = (TextView) findViewById(R.id.textView1);
         text2 = (TextView) findViewById(R.id.textView2);
@@ -34,10 +71,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.button1:
-                        displayTime(getTime());
+                        stopButtonNotPressed = true;
+                        thread = new Thread(runnable);
+                        thread.start();
                         break;
                     case R.id.button2:
-                        openActivity();
+//                        openActivity();
+                        Log.e("LOGG!!", "Before pressing stop button");
+                        stopButtonNotPressed = false;
+                        Log.e("LOGG!!", "After pressing stop button");
+                        text2.setText(String.valueOf(endTime) + " ms");
                         break;
                 }
             }

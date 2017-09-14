@@ -1,7 +1,10 @@
 package com.squorpikkor.app.labaratory;
 
+import android.app.LauncherActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class ListActivity extends android.app.ListActivity {
 
@@ -23,5 +26,11 @@ public class ListActivity extends android.app.ListActivity {
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, catNamesArray);
 
         setListAdapter(mAdapter);
+
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
     }
 }
