@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="some_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:text">""</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
 </resources>

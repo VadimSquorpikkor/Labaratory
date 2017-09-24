@@ -21,7 +21,9 @@
         <activity android:name=".Main2Activity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ListActivity" />
-        <activity android:name=".DBActivity"></activity>
+        <activity android:name=".DBActivity" />
+        <activity android:name=".DynamicActivity" />
+        <activity android:name=".delete"></activity>
     </application>
 
 </manifest>

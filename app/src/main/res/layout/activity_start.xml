@@ -21,5 +21,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/butt03"
         android:text="@string/db_activity"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/butt04"
+        android:text="@string/dynamic"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/butt05"
+        android:text="delete"/>
+
 
 </LinearLayout>

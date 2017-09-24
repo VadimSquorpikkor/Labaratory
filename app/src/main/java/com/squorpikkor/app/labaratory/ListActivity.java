@@ -23,7 +23,7 @@ public class ListActivity extends android.app.ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, catNamesArray);
+        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, catNamesArray);
 
         setListAdapter(mAdapter);
 
