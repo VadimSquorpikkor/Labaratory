@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -42,7 +43,7 @@ public class DynamicActivity extends AppCompatActivity {
         textList.get(1).setText(stringList.get(1));
         textList.get(2).setText(stringList.get(2));
 
-        ViewConstructor viewConstructor = new ViewConstructor(this,  layout);
+        ViewConstructor viewConstructor = new ViewConstructor(this, layout);
         viewConstructor.createTextViewList("LIST", 10);
         viewConstructor.setTextViewText("LIST", 5, "new text");
 
@@ -58,7 +59,8 @@ public class DynamicActivity extends AppCompatActivity {
             return viewController;
         }
 
-        /**Hash map is needed just for store lists of views,
+        /**
+         * Hash map is needed just for store lists of views,
          * Without HashMap, I do not know, how many lists I will create, 1 or 100,
          * so I can't just declare this 100 lists in class. And i will not have to.
          * Just put new ones to HashMap! And no matter 1 or 1000 list i should create.
@@ -86,16 +88,26 @@ public class DynamicActivity extends AppCompatActivity {
         }
 
         /**
-         *
          * That is it!!!
          */
         void createTextViewFromArray(ArrayList<String> list) {
             for (String s : list) {
                 TextView textView = new TextView(context);
                 textView.setText(s);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+                /**With XML style*/
+                /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     textView.setTextAppearance(R.style.some_text_style);
-                }
+                }*/
+
+                LinearLayout.LayoutParams lpView = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                );
+
+                textView.setLayoutParams(lpView);
+
+                //TextView tv = (TextView)getLayoutInflater().inflate(R.style.some_text_style)
+
                 layout.addView(textView);
             }
         }
